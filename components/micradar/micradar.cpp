@@ -647,10 +647,11 @@ void MICRADARComponent::micradar_frame_parse_work_status_(uint8_t command, uint8
     case 0x08:
     case 0x88:
   #ifdef USE_NUMBER
-      } else if ((this->sensitivity_number_ != nullptr) &&
+      if ((this->sensitivity_number_ != nullptr) &&
                ((data[FRAME_COMMAND_WORD_INDEX] == 0x08) || (data[FRAME_COMMAND_WORD_INDEX] == 0x88))) {
       // 1-3
-      this->sensitivity_number_->publish_state(data[FRAME_DATA_INDEX]);
+      this->sensitivity_number_->publish_state(data[FRAME_DATA_INDEX]) ;
+      }
   #endif
       break;
     case 0x09:
